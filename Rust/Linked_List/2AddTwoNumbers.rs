@@ -1,6 +1,3 @@
-// Definitely a better way to do this. I'm still learning rust so I will come back and improve this
-
-
 // Definition for singly-linked list.
 // #[derive(PartialEq, Eq, Clone, Debug)]
 // pub struct ListNode {
@@ -19,8 +16,8 @@
 // }
 impl Solution {
     pub fn add_two_numbers(l1: Option<Box<ListNode>>, l2: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
-        let mut head = Box::new(ListNode::new(0));
-        let mut tail = &mut head;
+        let mut dummy = Box::new(ListNode::new(0));
+        let mut tail = &mut dummy;
         let mut l1 = l1;
         let mut l2 = l2;
         let mut carry : i32 = 0;
@@ -30,13 +27,11 @@ impl Solution {
             let mut digit2 : i32 = 0;
             let mut sum : i32;
             if let Some(node1) = l1 {
-                println!("{}", node1.val);
                 digit1 = node1.val;
                 l1 = node1.next
             }
 
             if let Some(node2) = l2 {
-                println!("{}", node2.val);
                 digit2 = node2.val;
                 l2 = node2.next
             }
@@ -50,6 +45,6 @@ impl Solution {
             carry = sum / 10;
         }
 
-        head.next
+        dummy.next
     }
 }
